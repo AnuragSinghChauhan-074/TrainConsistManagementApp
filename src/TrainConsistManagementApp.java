@@ -8,23 +8,36 @@ public class TrainConsistManagementApp {
 
         String[] bogieIds = {"BG101","BG205","BG309","BG412","BG550"};
 
-        System.out.println("Available Bogie IDs:");
+        Arrays.sort(bogieIds);
+
+        System.out.println("Sorted Bogie IDs:");
         System.out.println(Arrays.toString(bogieIds));
 
         System.out.print("Enter Bogie ID to search: ");
-        String searchKey = sc.nextLine();
+        String key = sc.nextLine();
 
+        int low = 0;
+        int high = bogieIds.length - 1;
         boolean found = false;
 
-        for (int i = 0; i < bogieIds.length; i++) {
-            if (bogieIds[i].equals(searchKey)) {
+        while (low <= high) {
+
+            int mid = (low + high) / 2;
+
+            int result = bogieIds[mid].compareTo(key);
+
+            if (result == 0) {
                 found = true;
                 break;
+            } else if (result < 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
             }
         }
 
         if (found) {
-            System.out.println("Bogie Found: " + searchKey);
+            System.out.println("Bogie Found: " + key);
         } else {
             System.out.println("Bogie Not Found");
         }
