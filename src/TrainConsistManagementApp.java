@@ -6,33 +6,30 @@ public class TrainConsistManagementApp {
 
         Scanner sc = new Scanner(System.in);
 
-        String[] bogieIds = {"BG101","BG205","BG309","BG412","BG550"};
+        List<String> bogieIds = new ArrayList<>();
 
-        Arrays.sort(bogieIds);
+        System.out.print("Enter number of bogies: ");
+        int n = sc.nextInt();
+        sc.nextLine();
 
-        System.out.println("Sorted Bogie IDs:");
-        System.out.println(Arrays.toString(bogieIds));
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter Bogie ID: ");
+            bogieIds.add(sc.nextLine());
+        }
+
+        if (bogieIds.isEmpty()) {
+            throw new IllegalStateException("No bogies available. Cannot perform search.");
+        }
 
         System.out.print("Enter Bogie ID to search: ");
         String key = sc.nextLine();
 
-        int low = 0;
-        int high = bogieIds.length - 1;
         boolean found = false;
 
-        while (low <= high) {
-
-            int mid = (low + high) / 2;
-
-            int result = bogieIds[mid].compareTo(key);
-
-            if (result == 0) {
+        for (String id : bogieIds) {
+            if (id.equals(key)) {
                 found = true;
                 break;
-            } else if (result < 0) {
-                low = mid + 1;
-            } else {
-                high = mid - 1;
             }
         }
 
