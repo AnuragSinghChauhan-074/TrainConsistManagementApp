@@ -1,48 +1,34 @@
+import java.util.*;
+
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management App ===");
+        Scanner sc = new Scanner(System.in);
 
-        // ================= UC16 =================
-        System.out.println("\n=== UC16: Bubble Sort ===");
+        String[] bogieIds = {"BG101","BG205","BG309","BG412","BG550"};
 
-        int[] capacities = {72, 56, 24, 70, 60};
+        System.out.println("Available Bogie IDs:");
+        System.out.println(Arrays.toString(bogieIds));
 
-        System.out.print("Before Sorting: ");
-        for (int c : capacities) {
-            System.out.print(c + " ");
-        }
+        System.out.print("Enter Bogie ID to search: ");
+        String searchKey = sc.nextLine();
 
-        // Bubble Sort
-        for (int i = 0; i < capacities.length - 1; i++) {
-            for (int j = 0; j < capacities.length - i - 1; j++) {
-                if (capacities[j] > capacities[j + 1]) {
-                    int temp = capacities[j];
-                    capacities[j] = capacities[j + 1];
-                    capacities[j + 1] = temp;
-                }
+        boolean found = false;
+
+        for (int i = 0; i < bogieIds.length; i++) {
+            if (bogieIds[i].equals(searchKey)) {
+                found = true;
+                break;
             }
         }
 
-        System.out.print("\nAfter Sorting: ");
-        for (int c : capacities) {
-            System.out.print(c + " ");
+        if (found) {
+            System.out.println("Bogie Found: " + searchKey);
+        } else {
+            System.out.println("Bogie Not Found");
         }
 
-        System.out.println("\nProgram continues...");
-
-        // ================= UC17 =================
-        System.out.println("\n=== UC17: Sort Bogie Names ===");
-
-        String[] bogies = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
-
-        System.out.println("Before Sorting: " + java.util.Arrays.toString(bogies));
-
-        java.util.Arrays.sort(bogies);
-
-        System.out.println("After Sorting: " + java.util.Arrays.toString(bogies));
-
-        System.out.println("Program continues...");
+        sc.close();
     }
 }
