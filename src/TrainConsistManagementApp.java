@@ -4,7 +4,7 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // UC16: Bubble Sort
+        // ================= UC16 =================
         System.out.println("\n=== UC16: Bubble Sort ===");
 
         int[] capacities = {72, 56, 24, 70, 60};
@@ -14,10 +14,9 @@ public class TrainConsistManagementApp {
             System.out.print(c + " ");
         }
 
-        // Bubble Sort Logic
+        // Bubble Sort
         for (int i = 0; i < capacities.length - 1; i++) {
             for (int j = 0; j < capacities.length - i - 1; j++) {
-
                 if (capacities[j] > capacities[j + 1]) {
                     int temp = capacities[j];
                     capacities[j] = capacities[j + 1];
@@ -32,5 +31,18 @@ public class TrainConsistManagementApp {
         }
 
         System.out.println("\nProgram continues...");
+
+        // ================= UC17 =================
+        System.out.println("\n=== UC17: Sort Bogie Names ===");
+
+        String[] bogies = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
+
+        System.out.println("Before Sorting: " + java.util.Arrays.toString(bogies));
+
+        java.util.Arrays.sort(bogies);
+
+        System.out.println("After Sorting: " + java.util.Arrays.toString(bogies));
+
+        System.out.println("Program continues...");
     }
 }
